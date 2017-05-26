@@ -1,0 +1,3 @@
+xxhash==1.0.1
+psycopg2==2.7.1
+cookiecutter==1.5.1
