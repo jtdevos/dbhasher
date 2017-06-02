@@ -1,6 +1,8 @@
 import pytest
 from click.testing import CliRunner
 from dbhasher import cli
+from dbhasher import metadata
+
 
 
 @pytest.fixture

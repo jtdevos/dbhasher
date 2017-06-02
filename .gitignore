@@ -8,3 +8,4 @@ build/
 .coverage
 .hg/
 .vscode/
+.cache/

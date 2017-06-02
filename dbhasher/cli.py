@@ -10,3 +10,10 @@ def main(name, as_cowboy):
     """Generates checksums for database tables and queries"""
     greet = 'Howdy' if as_cowboy else 'Hello'
     click.echo('{0}, {1}.'.format(greet, name))
+
+
+class DatabaseMetadata:
+
+    def __init__(self):
+        pass
+    
