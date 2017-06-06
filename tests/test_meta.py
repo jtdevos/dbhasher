@@ -1,12 +1,11 @@
 import pytest
 from dbhasher import metadata
 
-@pytest.fixture
-def builder():
-    return metadata.Builder('hello')
+CON_STRING = "dbname='ezproxyconfig_jim' user='ezproxy_test' host='localhost'"
 
-def test_build(builder):
-    b = builder
-    assert b is not None
+def test_build():
+    meta = metadata.buld_metadata(CON_STRING)
+    assert meta is not None
+    assert meta.name == 'ezproxyconfig_jim'
 
 
