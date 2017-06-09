@@ -8,4 +8,7 @@ def test_build():
     assert meta is not None
     assert meta.name == 'ezproxyconfig_jim'
 
+    assert len(meta.tables) > 0 
+
+
 
