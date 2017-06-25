@@ -19,3 +19,7 @@ To use it:
 
     $ dbhash --help
 
+
+# Todo
+
+- script for creating dbhashuser that has rights to create schema

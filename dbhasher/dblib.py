@@ -25,7 +25,7 @@ def sample():
         digest = crc.hexdigest()
         logging.debug("row: %s\t hash: %s", rownum, digest)
     conn.close()
-    logging.debug("connection closed")
+    logging.debug('connection closed')
 
 
 

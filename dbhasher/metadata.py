@@ -4,6 +4,7 @@ import psycopg2
 
 
 
+
 class DatabaseMetadata:
     """DB-level Metadata"""
 
@@ -51,5 +52,17 @@ def buld_metadata(connstring):
     with psycopg2.connect(connstring) as conn:
         parms = conn.get_dsn_parameters()
         dbmeta = DatabaseMetadata(parms['dbname'])
+        
+    # now get the tables  
+    sqltables = """
+        select 
+            *
+        from
+            information_schema.tables tt
+                join information_schema.columns tc on cc.table_name = tt.table_name
+        where
+            tt.table_catalog = %s
+            and tt.table_schema = 'public'
+    """  
     return dbmeta
 
