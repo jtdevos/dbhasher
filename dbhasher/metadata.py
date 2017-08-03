@@ -46,23 +46,20 @@ class Builder:
 
 
 
-def buld_metadata(connstring):
+def build_metadata(connstring):
     builder = Builder(connstring)
 
     with psycopg2.connect(connstring) as conn:
         parms = conn.get_dsn_parameters()
         dbmeta = DatabaseMetadata(parms['dbname'])
         
-    # now get the tables  
-    sqltables = """
-        select 
-            *
-        from
-            information_schema.tables tt
-                join information_schema.columns tc on cc.table_name = tt.table_name
-        where
-            tt.table_catalog = %s
-            and tt.table_schema = 'public'
-    """  
+        # now get the tables
+        sql_tables = 'select table_name from information_schema.tables'
+        cursor = conn.cursor()
+        cursor.execute(sql_tables)
+        rows = cursor.fetchall()
+        tables = [TableMetadata(row) for row in rows]
+        dbmeta.tables = tables
+
     return dbmeta
 
